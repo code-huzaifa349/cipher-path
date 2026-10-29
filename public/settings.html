@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Settings | CipherPath</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/auth.css">
+  <script src="/app.js" defer></script>
+</head>
+<body data-page="settings">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="/"><span class="logo__mark" aria-hidden="true">&gt;_</span>CipherPath</a>
+      <nav class="auth-nav" aria-label="Account">
+        <a href="/dashboard.html">Dashboard</a>
+        <a href="/settings.html" aria-current="page">Settings</a>
+        <button class="btn btn--ghost btn--sm" type="button" data-logout>Log out</button>
+      </nav>
+    </div>
+  </header>
+  <main class="page">
+    <div class="container">
+      <div class="page__head"><h1>Account settings</h1></div>
+      <div class="settings-stack">
+        <section class="settings-card" aria-labelledby="profile-title">
+          <h2 id="profile-title">Profile</h2>
+          <form class="auth-form" id="profile-form">
+            <label for="p-username">Username</label>
+            <input id="p-username" name="username" type="text" autocomplete="username" minlength="3" maxlength="20" pattern="[A-Za-z0-9_]+" required>
+            <label for="p-email">Email</label>
+            <input id="p-email" name="email" type="email" autocomplete="email" required>
+            <label for="p-password">Current password</label>
+            <input id="p-password" name="password" type="password" autocomplete="current-password" aria-describedby="p-hint" required>
+            <span class="field-hint" id="p-hint">Needed to confirm any profile change.</span>
+            <p class="form-status" role="alert"></p>
+            <button class="btn btn--primary" type="submit">Save profile</button>
+          </form>
+        </section>
+
+        <section class="settings-card" aria-labelledby="pw-title">
+          <h2 id="pw-title">Change password</h2>
+          <form class="auth-form" id="password-form">
+            <label for="pw-current">Current password</label>
+            <input id="pw-current" name="current" type="password" autocomplete="current-password" required>
+            <label for="pw-next">New password</label>
+            <input id="pw-next" name="next" type="password" autocomplete="new-password" minlength="10" maxlength="128" aria-describedby="pw-hint" required>
+            <span class="field-hint" id="pw-hint">At least 10 characters. Your other devices will be logged out.</span>
+            <p class="form-status" role="alert"></p>
+            <button class="btn btn--primary" type="submit">Change password</button>
+          </form>
+        </section>
+
+        <section class="settings-card settings-card--danger" aria-labelledby="del-title">
+          <h2 id="del-title">Delete account</h2>
+          <p class="auth__sub">This permanently removes your account and all saved progress. It cannot be undone.</p>
+          <form class="auth-form" id="delete-form">
+            <label for="d-password">Password</label>
+            <input id="d-password" name="password" type="password" autocomplete="current-password" required>
+            <label class="check" for="d-confirm"><input id="d-confirm" name="confirm" type="checkbox" required> I understand this is permanent.</label>
+            <p class="form-status" role="alert"></p>
+            <button class="btn btn--danger" type="submit">Delete my account</button>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

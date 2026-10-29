@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CipherPath: hands-on cyber security learning (educational clone)</title>
+  <meta name="description" content="Portfolio clone of a cyber security learning landing page. Educational project, not affiliated with TryHackMe.">
+  <meta name="theme-color" content="#070b14">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <!-- Not deferred on purpose: it adds the "js" class before first paint so reveal styles don't flash. -->
+  <script src="script.js"></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#home" aria-label="CipherPath home"><span class="logo__mark" aria-hidden="true">&gt;_</span>CipherPath</a>
+      <button class="nav-toggle btn btn--ghost btn--sm" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">Menu</button>
+      <nav class="nav" id="site-nav" aria-label="Primary">
+        <ul class="nav__list">
+          <li><a href="#paths">Learn</a></li>
+          <li><a href="#why">Why CipherPath</a></li>
+          <li class="dropdown">
+            <button class="dropdown__btn" type="button" aria-expanded="false" aria-controls="menu-practice">Practice</button>
+            <ul class="dropdown__panel" id="menu-practice" hidden>
+              <li><a href="#showcase">Interactive labs</a></li>
+              <li><a href="#faq">Common questions</a></li>
+            </ul>
+          </li>
+          <li><a href="#community">Community</a></li>
+          <li><a href="#teams">Teams</a></li>
+          <li><a href="/login.html" data-auth-login>Log in</a></li>
+          <li class="nav__cta"><a class="btn btn--primary btn--sm" href="/signup.html" data-auth-link>Sign up</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--primary btn--sm header-cta" href="/signup.html" data-auth-link>Sign up</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div>
+          <h1 id="hero-title">Anyone can learn cyber security by doing it</h1>
+          <p class="lead">Break into practice labs, follow guided paths, and build real skills in your browser, from your first command to your first incident report.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="/signup.html" data-auth-link>Join for free</a>
+            <a class="btn btn--ghost" href="#paths">Browse learning paths</a>
+          </div>
+          <p class="hint">Beginner-friendly guides and challenges. No setup needed.</p>
+        </div>
+        <div class="terminal" role="img" aria-label="Illustration of a terminal window: a port scan finds two open services, then a flag is captured for 50 points">
+          <div class="terminal__bar"><i></i><i></i><i></i></div>
+          <div class="terminal__body">
+            <span class="dim">$ nmap -sV 10.10.0.42</span>
+            <span>22/tcp&nbsp; open&nbsp; ssh&nbsp;&nbsp; OpenSSH 8.2</span>
+            <span>80/tcp&nbsp; open&nbsp; http&nbsp; nginx 1.18</span>
+            <span class="dim">$ ./capture-flag --room web-101</span>
+            <span class="ok">Flag captured. +50 points</span>
+            <span class="dim">$ <b class="cursor"></b></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="paths" aria-labelledby="paths-title" data-paths>
+      <div class="container">
+        <div class="section__head">
+          <h2 id="paths-title">Go from wherever you are to the role you want</h2>
+          <p>Pick your starting point and a target role. The list updates as you choose. Path names here are original placeholders.</p>
+        </div>
+        <div class="filters">
+          <div class="filter-group" role="group" aria-labelledby="f-level">
+            <span class="filter-label" id="f-level">Experience</span>
+            <button class="chip" type="button" data-group="level" data-value="all" aria-pressed="true">All</button>
+            <button class="chip" type="button" data-group="level" data-value="start" aria-pressed="false">Starting from scratch</button>
+            <button class="chip" type="button" data-group="level" data-value="basics" aria-pressed="false">Know the basics</button>
+            <button class="chip" type="button" data-group="level" data-value="expert" aria-pressed="false">Upskilling for experts</button>
+          </div>
+          <div class="filter-group" role="group" aria-labelledby="f-role">
+            <span class="filter-label" id="f-role">Target role</span>
+            <button class="chip" type="button" data-group="role" data-value="all" aria-pressed="true">All</button>
+            <button class="chip" type="button" data-group="role" data-value="analyst" aria-pressed="false">Security analyst</button>
+            <button class="chip" type="button" data-group="role" data-value="pentest" aria-pressed="false">Penetration tester</button>
+            <button class="chip" type="button" data-group="role" data-value="engineer" aria-pressed="false">Security engineer</button>
+            <button class="chip" type="button" data-group="role" data-value="ai" aria-pressed="false">AI security</button>
+          </div>
+        </div>
+        <p class="sample-note" id="path-count" role="status" aria-live="polite">Showing 8 of 8 paths</p>
+        <ul class="path-grid">
+          <li class="path-card" data-level="start" data-roles="analyst pentest engineer ai">
+            <span class="path-card__icon" aria-hidden="true">101</span>
+            <span class="badge badge--easy">Easy</span>
+            <h3>Security Foundations</h3>
+            <a href="#join">Preview path</a>
+          </li>
+          <li class="path-card" data-level="start" data-roles="analyst pentest engineer">
+            <span class="path-card__icon" aria-hidden="true">net</span>
+            <span class="badge badge--easy">Easy</span>
+            <h3>Networking Primer</h3>
+            <a href="#join">Preview path</a>
+          </li>
+          <li class="path-card" data-level="basics" data-roles="analyst">
+            <span class="path-card__icon" aria-hidden="true">soc</span>
+            <span class="badge badge--easy">Easy</span>
+            <h3>SOC Analyst Level 1</h3>
+            <a href="#join">Preview path</a>
+          </li>
+          <li class="path-card" data-level="basics" data-roles="pentest">
+            <span class="path-card__icon" aria-hidden="true">pt</span>
+            <span class="badge badge--intermediate">Intermediate</span>
+            <h3>Junior Pen Tester</h3>
+            <a href="#join">Preview path</a>
+          </li>
+          <li class="path-card" data-level="basics" data-roles="pentest">
+            <span class="path-card__icon" aria-hidden="true">web</span>
+            <span class="badge badge--intermediate">Intermediate</span>
+            <h3>Web App Pentesting</h3>
+            <a href="#join">Preview path</a>
+          </li>
+          <li class="path-card" data-level="basics" data-roles="ai">
+            <span class="path-card__icon" aria-hidden="true">ai</span>
+            <span class="badge badge--intermediate">Intermediate</span>
+            <span class="badge badge--new">New</span>
+            <h3>AI Security Basics</h3>
+            <a href="#join">Preview path</a>
+          </li>
+          <li class="path-card" data-level="basics" data-roles="engineer">
+            <span class="path-card__icon" aria-hidden="true">cld</span>
+            <span class="badge badge--intermediate">Intermediate</span>
+            <h3>Secure Cloud Engineering</h3>
+            <a href="#join">Preview path</a>
+          </li>
+          <li class="path-card" data-level="expert" data-roles="analyst pentest">
+            <span class="path-card__icon" aria-hidden="true">red</span>
+            <span class="badge badge--hard">Hard</span>
+            <h3>Red Team Operations</h3>
+            <a href="#join">Preview path</a>
+          </li>
+        </ul>
+        <p class="empty" id="path-empty" hidden>No paths match both filters. Try setting one of them back to All.</p>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="why" aria-labelledby="why-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="why-title">Real-world offensive and defensive training</h2>
+          <p>Labs for every level, from complete beginner to seasoned hacker, built around practice instead of slide decks.</p>
+        </div>
+        <ul class="pillars">
+          <li class="pillar reveal"><span class="pillar__icon" aria-hidden="true">&gt;_</span><h3>Learn by doing</h3><p>Every lesson ends in a task you complete yourself, so theory sticks.</p></li>
+          <li class="pillar reveal"><span class="pillar__icon" aria-hidden="true">[ ]</span><h3>Guided from day one</h3><p>Paths set the order of topics, so you always know what to learn next.</p></li>
+          <li class="pillar reveal"><span class="pillar__icon" aria-hidden="true">{ }</span><h3>Real-world scenarios</h3><p>Attack and defend networks modelled on those organisations run today.</p></li>
+          <li class="pillar reveal"><span class="pillar__icon" aria-hidden="true">24h</span><h3>On demand</h3><p>Start any time, from anywhere. A browser and a connection are enough.</p></li>
+          <li class="pillar reveal"><span class="pillar__icon" aria-hidden="true">xp</span><h3>Points and streaks</h3><p>Small wins add up and give you a reason to come back tomorrow.</p></li>
+          <li class="pillar reveal"><span class="pillar__icon" aria-hidden="true">low</span><h3>Low cost</h3><p>A generous free tier, with paid plans priced for individuals.</p></li>
+        </ul>
+        <p class="cta-row"><a class="btn btn--primary" href="/signup.html" data-auth-link>Join for free</a></p>
+      </div>
+    </section>
+
+    <section class="section" id="showcase" aria-labelledby="show-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="show-title">An interactive learning experience</h2>
+          <p>Choose a feature to see how a typical lab works. These panels are illustrations, not live labs.</p>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Learning features">
+          <button class="chip" type="button" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true">Exercises in every lesson</button>
+          <button class="chip" type="button" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1">Beginner friendly</button>
+          <button class="chip" type="button" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1">Start hacking instantly</button>
+          <button class="chip" type="button" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1">Real-world networks</button>
+        </div>
+        <div class="panel" id="panel-1" role="tabpanel" aria-labelledby="tab-1" tabindex="0">
+          <div><h3>Theory, then practice</h3><p>Read a short explanation, then answer questions and run commands against a practice target before moving on.</p></div>
+          <pre class="mock" aria-label="Example lesson task"><code>Task 2: Find the hidden page
+Hint: wordlists help.
+$ gobuster dir -u http://target -w common.txt
+/admin   (Status: 301)
+Question: What is the flag?  [ ____ ]</code></pre>
+        </div>
+        <div class="panel" id="panel-2" role="tabpanel" aria-labelledby="tab-2" tabindex="0">
+          <div><h3>New to security? Start here</h3><p>Foundation paths teach the basics in order: networks, Linux, the web, and how attackers think. No prior experience assumed.</p></div>
+          <pre class="mock" aria-label="Example path progress"><code>Security Foundations
+[#####-----]  50% complete
+  done  How the internet works
+  done  Linux basics
+  next  Web fundamentals</code></pre>
+        </div>
+        <div class="panel" id="panel-3" role="tabpanel" aria-labelledby="tab-3" tabindex="0">
+          <div><h3>Everything runs in the browser</h3><p>Launch a prepared machine with the tools already installed. Nothing to download and nothing to configure.</p></div>
+          <pre class="mock" aria-label="Example machine launch"><code>Starting virtual machine...
+Machine ready in 00:42
+IP address: 10.10.0.42
+Time remaining: 59:59</code></pre>
+        </div>
+        <div class="panel" id="panel-4" role="tabpanel" aria-labelledby="tab-4" tabindex="0">
+          <div><h3>Attack and defend realistic networks</h3><p>Move from single machines to small company networks, then investigate what an attacker left behind.</p></div>
+          <pre class="mock" aria-label="Example network map"><code>[web-01] --- [db-01]
+   |
+[workstation-03]
+Alert: unusual login at 02:14
+Task: trace the source</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="community" aria-labelledby="comm-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="comm-title">A community that keeps you going</h2>
+          <p>All figures and quotes below are sample content for this demo.</p>
+        </div>
+        <ul class="stats">
+          <li><strong>120k+</strong><span>Sample: registered learners</span></li>
+          <li><strong>400+</strong><span>Sample: hands-on labs</span></li>
+          <li><strong>35</strong><span>Sample: guided paths</span></li>
+        </ul>
+        <div class="marquee-wrap">
+          <button class="marquee__ctl btn btn--ghost btn--sm" type="button" aria-pressed="false">Pause</button>
+          <div class="marquee">
+            <div class="marquee__track">
+              <figure class="t-card"><blockquote>Sample quote: the paths told me what to learn next, so I stopped getting lost.</blockquote><figcaption>Placeholder learner A</figcaption></figure>
+              <figure class="t-card"><blockquote>Sample quote: launching a machine in the browser removed my setup headaches.</blockquote><figcaption>Placeholder learner B</figcaption></figure>
+              <figure class="t-card"><blockquote>Sample quote: daily streaks turned studying into a habit.</blockquote><figcaption>Placeholder learner C</figcaption></figure>
+              <figure class="t-card"><blockquote>Sample quote: small challenges gave me confidence before my first interview.</blockquote><figcaption>Placeholder learner D</figcaption></figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="teams" aria-labelledby="teams-title">
+      <div class="container">
+        <div class="section__head"><h2 id="teams-title">Training for teams and classrooms</h2></div>
+        <div class="split">
+          <article class="team-card reveal"><h3>For business</h3><p>Upskill a security team with assigned paths and a view of who has finished what.</p><a href="#join">Ask about team plans</a></article>
+          <article class="team-card reveal"><h3>For education</h3><p>Hand students ready-made labs and follow their progress from one dashboard.</p><a href="#join">Ask about classrooms</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-labelledby="trust-title">
+      <div class="container">
+        <h2 class="center" id="trust-title">Trusted by teams everywhere</h2>
+        <p class="center sample-note">Placeholder names only. No real companies are implied.</p>
+        <ul class="logos">
+          <li>Company A</li><li>Company B</li><li>Company C</li><li>Company D</li><li>Company E</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container container--narrow">
+        <h2 id="faq-title">Common questions</h2>
+        <div class="faq">
+          <details><summary>Do I need any experience?</summary><p>No. Foundation paths start from zero and build up step by step.</p></details>
+          <details><summary>Do I need to install anything?</summary><p>No. Labs run in your browser on prepared machines.</p></details>
+          <details><summary>Is this the real TryHackMe site?</summary><p>No. This is an independent, educational portfolio project and is not affiliated with TryHackMe.</p></details>
+          <details><summary>Do I need an account?</summary><p>Browsing is open to everyone. A free account saves your path progress.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="join" aria-labelledby="join-title">
+      <div class="container">
+        <div class="cta">
+          <h2 id="join-title">Start learning today</h2>
+          <p>Create a free account to save your progress across devices.</p>
+          <p class="cta-row"><a class="btn btn--primary" href="/signup.html" data-auth-link>Create your free account</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <div>
+        <a class="logo" href="#home"><span class="logo__mark" aria-hidden="true">&gt;_</span>CipherPath</a>
+        <p class="footer__blurb">A hands-on cyber security training landing page, built for a frontend portfolio.</p>
+      </div>
+      <nav aria-label="Learning"><h2 class="footer__title">Learning</h2><ul><li><a href="#paths">Learning paths</a></li><li><a href="#showcase">Interactive labs</a></li><li><a href="#teams">For teams</a></li></ul></nav>
+      <nav aria-label="Resources"><h2 class="footer__title">Resources</h2><ul><li><a href="#why">Why CipherPath</a></li><li><a href="#community">Community</a></li><li><a href="#faq">FAQ</a></li></ul></nav>
+      <nav aria-label="Social links"><h2 class="footer__title">Follow</h2><ul>
+        <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://discord.com/" target="_blank" rel="noopener noreferrer">Discord</a></li>
+      </ul></nav>
+    </div>
+    <div class="container footer__legal">
+      <p>Educational clone for portfolio use. Not affiliated with, endorsed by, or connected to TryHackMe. Statistics, quotes and company names are placeholders.</p>
+    </div>
+  </footer>
+</body>
+</html>

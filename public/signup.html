@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create an account | CipherPath</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/auth.css">
+  <script src="/app.js" defer></script>
+</head>
+<body data-page="signup">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="/"><span class="logo__mark" aria-hidden="true">&gt;_</span>CipherPath</a>
+      <nav class="auth-nav" aria-label="Account"><a href="/login.html" class="btn btn--ghost btn--sm">Log in</a></nav>
+    </div>
+  </header>
+  <main class="auth">
+    <div class="auth__card">
+      <h1>Create your account</h1>
+      <p class="auth__sub">Free, and it saves your progress on every path.</p>
+      <form class="auth-form" id="signup-form">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username" minlength="3" maxlength="20" pattern="[A-Za-z0-9_]+" aria-describedby="username-hint" required>
+        <span class="field-hint" id="username-hint">3 to 20 letters, numbers or underscores.</span>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="new-password" minlength="10" maxlength="128" aria-describedby="password-hint" required>
+        <span class="field-hint" id="password-hint">At least 10 characters. A few random words work well.</span>
+        <p class="form-status" role="alert"></p>
+        <button class="btn btn--primary" type="submit">Create account</button>
+      </form>
+      <p class="auth__alt">Already have an account? <a href="/login.html">Log in</a></p>
+    </div>
+  </main>
+</body>
+</html>
