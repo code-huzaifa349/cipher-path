@@ -12,8 +12,9 @@ const PROD = process.env.NODE_ENV === 'production';
 const SESSION_MS = 7 * 24 * 60 * 60 * 1000;
 
 /* ---------- Database ---------- */
-fs.mkdirSync(path.join(__dirname, 'data'), { recursive: true });
-const db = new DatabaseSync(path.join(__dirname, 'data', 'app.db'));
+const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
+fs.mkdirSync(DATA_DIR, { recursive: true });
+const db = new DatabaseSync(path.join(DATA_DIR, 'app.db'));
 db.exec(`
   PRAGMA journal_mode = WAL;
   PRAGMA foreign_keys = ON;
@@ -135,6 +136,7 @@ const auth = (req, res, next) => {
 
 /* ---------- App ---------- */
 const app = express();
+app.set('trust proxy', 1);
 app.disable('x-powered-by');
 app.use((req, res, next) => {
   res.set({
